@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foodbanks</title>
+	<!--
+		for some reason, the style.css file dies not work anymore
+		so my styles are now embedded.
+	-->
+	 <!-- <link rel="stylesheet" type="text/css" href='style.css'> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Ag-9UmaOu3hCq2d2bxFTnt2ryCnUmD81o8_dEMuHCqbAFJ0TMwiY1IuhzPUjRaC6&callback=loadMapScenario' async defer></script>
+	<script src='foodbanks.js'></script>
+	<style>
+		:root{
+			--themeColor: rgb(6, 204, 138);
+			--baseheadercolor: rgb(161, 248, 201);
+		}
+		body{
+			padding: 0;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.banner{
+			margin-left: 15%;
+			display: inline-block;
+		}
+		div.banner h1{
+			color: var(--baseheadercolor);
+			font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            color: var(--themeColor);
+            font-weight: bold;
+        }
+		div.containerr{
+			display: grid;
+			grid-template-rows: 2fr 8fr 2fr;
+		}
+		div.topp{
+			background-color: var(--themeColor);
+		}
+		div.bottom{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		div.bottom div.rightPad{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		nav{
+			float: right;
+			margin-right: 15%;
+		}
+		header{
+			display: table;
+			clear: both;
+			content: "";
+			width: 100%;
+			padding: 1% 0 1% 0;
+		}
+		header figure{
+			float: left;
+		}
+		nav ul.rightNav{
+			padding-top: 5%;
+		}
+		nav ul.rightNav li{
+			list-style: none;
+			float: left;
+			padding-left: 20px;
+		}
+        a{
+            text-decoration: none;
+			color: var(--baseheadercolor);
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+        div.contactContainer{
+            margin: 0 15%;
+            display: grid;
+            grid-template-rows: 0.5fr 2fr;
+        }
+        div.column{
+            display: grid;
+            grid-gap: 2%;
+            grid-template-columns: 1fr 1fr;
+        }
+        aside{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 2%;
+            background-color: var(--baseheadercolor);
+            border-radius: 10px;
+            padding: 5%;
+        }
+        h4{
+            border-bottom: 1px solid;
+            padding-bottom: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+        div#myMap{
+            border-radius: 10px;
+        }	 
+    </style> 
+</head>
+<body>
+	<div class="containerr">
+		<div class="topp">
+			<header>
+				<!-- <figure>LOGO</figure> -->
+				<nav>
+					<ul class="rightNav">
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="donate.html">Donate</a></li>
+						<li><a href="volunteer.html">Volunteer</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<!-- <br> -->
+				<div class="banner">
+					<h1><a href="index.html">FOOD BANKS EVERYWHERE</a></h1>
+				</div>
+			</header>
+        </div>
+        <div class="contactContainer">
+            <div>
+                <h1>Contact Us!</h1>
+            </div>
+
+            <div class="column">
+                <div class="form">
+                    <form action="somethingelse3.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                          <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="john123@something.com" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="tel">Phone:</label>
+                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="(234) 5678 901" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="comment">Message:</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <aside>         <!--right-->
+                <div>
+                    <h4>Contact us here!</h4>
+                    <p>Food Banks Everywhere</p>
+                    <p>123 Street Street,</p>
+                    <p>Hamilton, Ontario,</p>
+                    <p>L8W3V4</p>
+                    <p>Canada</p>
+                </div>
+
+                <div id="myMap">
+                    <script type="text/javascript">
+                        var infobox;
+                    
+                    
+                    function loadMapScenario(){
+                        navigator.geolocation.getCurrentPosition(function(position){
+                            var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                                mapTypeId: Microsoft.Maps.MapTypeId.aerial
+                            });
+                        });
+                    }
+                    
+                    </script>
+                                    </div>
+            </aside>
+
+        </div>
+    </div>
+</body>
+</html>

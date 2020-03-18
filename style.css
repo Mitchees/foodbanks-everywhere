@@ -1,0 +1,61 @@
+:root{
+	--themeColor: rgb(6, 204, 138);
+	--baseheadercolor: rgb(161, 248, 201);
+}
+body{
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+div.banner{
+	margin-left: 15%;
+	display: inline-block;
+}
+div.banner h1{
+	color: var(--baseheadercolor);
+}
+div.container{
+	display: grid;
+	grid-template-rows: 2fr 8fr 2fr;
+}
+div.top{
+	background-color: var(--themeColor);
+}
+div.bottom{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+div.bottom div.rightPad{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+nav{
+	float: right;
+	margin-right: 15%;
+}
+header{
+	display: table;
+	clear: both;
+	content: "";
+	width: 100%;
+	padding: 1% 0 1% 0;
+}
+header figure{
+	float: left;
+}
+nav ul.rightNav{
+	padding-top: 5%;
+}
+nav ul.rightNav li{
+	list-style: none;
+	float: left;
+	padding-left: 20px;
+}
+ul.rightNav li a{
+	text-decoration: none;
+	color: var(--baseheadercolor);
+}
+iframe{
+	width: 100%;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="foodbanks.js"></script>
+    <h1 id="success"></h1>
+<!-- JavaScript Code -->
+        <script>
+            for (var i = 0; i < foodbanks.length; i++) {
+                $.post(
+                    "somethingelse.php",
+                    {"organization" : foodbanks[i].properties.Organization,
+                        "latitude" : foodbanks[i].geometry.coordinates[1],
+                        "longitude" : foodbanks[i].geometry.coordinates[0],
+                        "aaddress" : foodbanks[i].properties.Full_Address,
+                        "municipality" : foodbanks[i].properties.Municipality,
+                    },
+                    function(success) {
+                            $("#success").html("Operation Successful: " + success);
+                    }, "json"
+                );
+                console.log(foodbanks[i].geometry.coordinates[1]);
+            }
+        </script>
+</body>
+</html>

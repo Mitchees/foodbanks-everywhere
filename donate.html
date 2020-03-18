@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Donate</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+    <script src='foodbanks.js'></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+		:root{
+			--themeColor: rgb(6, 204, 138);
+			--baseheadercolor: rgb(161, 248, 201);
+		}
+		body{
+			padding: 0;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.banner{
+			margin-left: 15%;
+			display: inline-block;
+		}
+		div.containerr{
+			display: grid;
+			grid-template-rows: 2fr 8fr 2fr;
+        }
+        h1{
+            color: var(--themeColor);
+            font-weight: bold;
+        }
+		div.topp{
+			background-color: var(--themeColor);
+		}
+		div.bottom{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		div.bottom div.rightPad{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		nav{
+			float: right;
+			margin-right: 15%;
+		}
+		header{
+			display: table;
+			clear: both;
+			content: "";
+			width: 100%;
+			padding: 1% 0 1% 0;
+		}
+		header figure{
+			float: left;
+		}
+		nav ul.rightNav{
+			padding-top: 5%;
+		}
+		nav ul.rightNav li{
+			list-style: none;
+			float: left;
+			padding-left: 20px;
+		}
+        a{
+            text-decoration: none;
+			color: var(--baseheadercolor);
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+        div.donateContainer{
+            margin: 0 15%;
+            display: grid;
+            grid-template-rows: 0.5fr 2fr;
+        }
+        div.column{
+            display: grid;
+            grid-gap: 2%;
+            grid-template-columns: 1fr 1fr;
+        }
+	 </style> 
+
+</head>
+<body>
+	<div class="containerr">
+		<div class="topp">
+			<header>
+				<!-- <figure>LOGO</figure> -->
+				<nav>
+					<ul class="rightNav">
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="donate.html">Donate</a></li>
+						<li><a href="volunteer.html">Volunteer</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<!-- <br> -->
+				<div class="banner">
+					<h1><a href="index.html">FOOD BANKS EVERYWHERE</a></h1>
+				</div>
+			</header>
+        </div>
+
+        <div class="donateContainer">
+            <div>
+                <h1>Donate to a foodbank of your choice!</h1>
+            </div>
+            
+            <div class="column">
+                <div class="form">
+                    <form action="somethingelse.php" method="POST">
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="sel1">Food bank:</label>
+                          <select class="form-control" id="sel1" name="sel1" required>
+                              <script>
+                                  for(var i = 0; i < foodbanks.length; i++){
+                                    $('#sel1').append(
+                                            $("<option/>").html(foodbanks[i].properties.Organization)
+                                        );
+                                  }
+                              </script>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="donation">Donation:</label>
+                            <input type="text" class="form-control" id="donation" name="donation" placeholder="See list at the right" required>
+                          </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+                <aside>         <!--right-->
+                    <h2>Items we accept</h2>
+                    <ul>
+                        <li>Non-expired canned and dry food (non-perishable) for the food bank. </li>
+                        <li>Toiletries, paper products and cleaning supplies. </li>
+                        <li>Cash donations ​(cash, cheque or gift cards only.Tax receipts can be issued for donations over $10.00)</li>
+                        <li>New or gently used and clean clothes for women, men and children - including belts and hats</li>
+                        <li>New or gently used shoes and boots for women, men and children</li>
+                        <li>Bedding (sheets, pillowcases, shams, duvet covers, blankets and quilts) - all sizes</li>
+                        <li>Towels (bath or kitchen)</li>
+                        <li>Dishes, glassware and cutlery in good condition and not chipped or cracked</li>
+                        <li>Clean and usable pots, pans and bake-ware</li>
+                        <li>Small appliances in working order (including microwaves, toaster ovens and coffeemakers)</li>
+                    </ul>
+                </aside>
+                </div>
+        </div>
+    
+    </div>
+
+
+
+</body>
+</html>

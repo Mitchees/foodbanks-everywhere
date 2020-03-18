@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foodbanks</title>
+	<!--
+		for some reason, the style.css file dies not work anymore
+		so my styles are now embedded.
+	-->
+	 <!-- <link rel="stylesheet" type="text/css" href='style.css'> -->
+	 
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Ag-9UmaOu3hCq2d2bxFTnt2ryCnUmD81o8_dEMuHCqbAFJ0TMwiY1IuhzPUjRaC6&callback=loadMapScenario' async defer></script>
+	<script src='foodbanks.js'></script>
+	<style>
+		:root{
+			--themeColor: rgb(6, 204, 138);
+			--baseheadercolor: rgb(161, 248, 201);
+		}
+		body{
+			padding: 0;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.banner{
+			margin-left: 15%;
+			display: inline-block;
+		}
+		div.banner h1{
+			color: var(--baseheadercolor);
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.container{
+			display: grid;
+			grid-template-rows: 2fr 8fr 2fr;
+		}
+		div.top{
+			background-color: var(--themeColor);
+		}
+		div.bottom{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		div.bottom div.rightPad{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		nav{
+			float: right;
+			margin-right: 15%;
+		}
+		header{
+			display: table;
+			clear: both;
+			content: "";
+			width: 100%;
+			padding: 1% 0 1% 0;
+		}
+		header figure{
+			float: left;
+		}
+		nav ul.rightNav{
+			padding-top: 5%;
+		}
+		nav ul.rightNav li{
+			list-style: none;
+			float: left;
+			padding-left: 20px;
+		}
+        a{
+            text-decoration: none;
+			color: var(--baseheadercolor);
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+	 </style> 
+</head>
+<body>
+	<div class="container">
+		<div class="top">
+			<header>
+				<!-- <figure>LOGO</figure> -->
+				<nav>
+					<ul class="rightNav">
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="donate.html">Donate</a></li>
+						<li><a href="volunteer.html">Volunteer</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<!-- <br> -->
+				<div class="banner">
+					<h1><a href="index.html">FOOD BANKS EVERYWHERE</a></h1>
+				</div>
+			</header>
+
+		</div>
+
+		<div class="middle">
+			<div id="myMap">
+<!-- <iframe src="https://niagaraopendata.ca/dataset/foodbanks/resource/a59c19e8-883e-4331-af95-e225128cab92/view/326eb3bf-72e9-47a2-b496-6b560831fae7" frameBorder="0"></iframe>			
+ -->
+    </div>
+		</div>
+
+		<div class="bottom">
+			<div class="leftPad">
+				
+			</div>
+			<div class="rightPad">
+				<figure>1</figure>
+				<figure>2</figure>
+				<figure>3</figure>
+				<figure>4</figure>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+    var infobox;
+
+
+function loadMapScenario(){
+    navigator.geolocation.getCurrentPosition(function(position){
+        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+            center: new Microsoft.Maps.Location(foodbanks[4].geometry.coordinates[1], foodbanks[4].geometry.coordinates[0]),
+            zoom: 9
+        });
+
+			for (var i = 0; i < foodbanks.length; i++)
+			{
+				var latitude = foodbanks[i].geometry.coordinates[1];
+				var longitude = foodbanks[i].geometry.coordinates[0];
+
+	          // create a new location for this fire station 
+	            var location = new Microsoft.Maps.Location(latitude, longitude);
+
+			  // create a pushpin at this location, give it a label with 
+			  // the foodbank name
+		        var pushpin = new Microsoft.Maps.Pushpin(location, {
+		        	title: foodbanks[i].properties.Organization,
+		        	// icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png',
+		        	color: 'green'
+		        });
+
+            	console.log(foodbanks[i].properties.Organization);
+
+	          //create infobox
+	            infobox = new Microsoft.Maps.Infobox(location, {
+                    visible: false
+                });
+
+                pushpin.metadata = {
+                    title: foodbanks[i].properties.Organization,
+                    description: foodbanks[i].properties.Full_Address
+                };
+	              // {
+	              //     title: foodbanks[i].properties.Organization,
+	              //     description: foodbanks[i].properties.Full_Address,
+	              //     visible: false
+	              // }
+	          
+	          // add the pushpin to the map
+	          map.entities.push(pushpin);
+
+
+	          //add infobox to map
+	          infobox.setMap(map);
+
+	          //add event handler to the pushpins 
+	          Microsoft.Maps.Events.addHandler(pushpin, 'click', function(e){
+                    //Make sure the infobox has metadata to display.
+                    if (e.target.metadata) {
+                        //Set the infobox options with the metadata of the pushpin.
+                        infobox.setOptions({
+                            location: e.target.getLocation(),
+                            title: e.target.metadata.title,
+                            description: e.target.metadata.description,
+                            visible: true
+                        });
+                    }
+
+	          })
+
+	        }
+
+
+    });
+}
+
+</script>
+</html>

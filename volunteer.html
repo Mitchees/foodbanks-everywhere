@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Volunteer</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='foodbanks.js'></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+		:root{
+			--themeColor: rgb(6, 204, 138);
+			--baseheadercolor: rgb(161, 248, 201);
+		}
+		body{
+			padding: 0;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.banner{
+			margin-left: 15%;
+			display: inline-block;
+		}
+		div.banner h1{
+			color: var(--baseheadercolor);
+		}
+		div.containerr{
+			display: grid;
+			grid-template-rows: 2fr 8fr 2fr;
+        }
+        h1{
+            color: var(--themeColor);
+            font-weight: bold;
+        }
+		div.topp{
+			background-color: var(--themeColor);
+		}
+		div.bottom{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		div.bottom div.rightPad{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		nav{
+			float: right;
+			margin-right: 15%;
+		}
+		header{
+			display: table;
+			clear: both;
+			content: "";
+			width: 100%;
+			padding: 1% 0 1% 0;
+		}
+		header figure{
+			float: left;
+		}
+		nav ul.rightNav{
+			padding-top: 5%;
+		}
+		nav ul.rightNav li{
+			list-style: none;
+			float: left;
+			padding-left: 20px;
+		}
+        a{
+            text-decoration: none;
+			color: var(--baseheadercolor);
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+		iframe{
+			width: 100%;
+        }
+        div.donateContainer{
+            margin: 0 15%;
+            display: grid;
+            grid-template-rows: 0.5fr 2fr;
+        }
+        div.column{
+            display: grid;
+            grid-gap: 2%;
+            grid-template-columns: 1fr 1fr;
+        }
+	 </style> 
+
+</head>
+<body>
+	<div class="containerr">
+		<div class="topp">
+			<header>
+				<!-- <figure>LOGO</figure> -->
+				<nav>
+					<ul class="rightNav">
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="donate.html">Donate</a></li>
+						<li><a href="volunteer.html">Volunteer</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<!-- <br> -->
+				<div class="banner">
+					<h1><a href="index.html">FOOD BANKS EVERYWHERE</a></h1>
+				</div>
+			</header>
+        </div>
+
+        <div class="donateContainer">
+            <div>
+                <h1>Volunteer at a foodbank of your choice!</h1>
+            </div>
+            
+            <div class="column">
+                <div class="form">
+                    <form action="somethingelse2.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="john123@something.com" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="tel">Phone:</label>
+                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="(234) 5678 901" required>
+                          </div>
+                            <div class="form-group">
+                          <label for="sel1">Food bank:</label>
+                          <select class="form-control" id="sel1" name="sel1" required>
+                              <script>
+                                  for(var i = 0; i < foodbanks.length; i++){
+                                    $('#sel1').append(
+                                            $("<option/>").html(foodbanks[i].properties.Organization)
+                                        );
+                                  }
+                              </script>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+
+                </div>
+                <aside>         <!--right-->
+                    <h2>About Volunteering</h2>
+                    <p>We require a commitment from volunteers of 4 ½ hours, once a week Monday through Friday (9:30 till 2) 
+                    as well as a couple of Sundays during the spring and summer months.
+                    The position con sists of sorting non-food donations, stocking shelves, culling older items, 
+                    interacting with customers and helping to keep the store neat and tidy. 
+                    Some medium lifting is required at times.</p>
+                </aside>
+
+        </div>
+    
+    </div>
+
+
+
+</body>
+</html>
